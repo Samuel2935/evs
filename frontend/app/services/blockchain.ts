@@ -1,5 +1,5 @@
 import { ethers, Contract } from "ethers";
-import VotingABI from "./VotingABI.json";
+import VotingABI from "./votingABI.json";
 
 const CONTRACT_ADDRESS = "DEPLOYED_ADDRESS";
 
