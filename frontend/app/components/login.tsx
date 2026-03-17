@@ -1,33 +1,29 @@
-"use client";
-import { useState } from "react";
+import React, { useState } from "react";
 import { hashNIN } from "../services/blockchain";
 
-type LoginProps = {
+interface LoginProps {
   setNinHash: (hash: string) => void;
-};
+}
 
 export default function Login({ setNinHash }: LoginProps) {
   const [nin, setNin] = useState<string>("");
 
   const handleLogin = () => {
+    if (!nin) return;
     const hash = hashNIN(nin);
     setNinHash(hash);
   };
 
   return (
-    <div>
-      <h2>NIN Login</h2>
-
+    <div className="flex flex-col gap-2">
       <input
         type="text"
         placeholder="Enter NIN"
         value={nin}
-        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
-          setNin(e.target.value)
-        }
+        onChange={(e) => setNin(e.target.value)}
+        className="p-2 rounded "
       />
-
-      <button onClick={handleLogin}>
+      <button onClick={handleLogin} className="bg-green-700 text-white p-2 rounded">
         Sign In
       </button>
     </div>
